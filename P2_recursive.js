@@ -13,6 +13,9 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 find the sum of the even-valued terms.
 */
 
+/*
+This function still needs work...
+
 function isEven(value) {
 	if(value%2 === 0) {
 		return true;
@@ -20,18 +23,24 @@ function isEven(value) {
       return false;
     }
 }
+*/
+
+// The recursive function 'fibonacci' takes the parameter 'value'. Our base case occurs when 'value' is less than 2 (1 or 0)
+// and that same value is returned. Otherwise, the function will recursively call to itself using decremented parameters 
+// of (value-1) and (value-2) and returning the sum of those two recursive function calls (creates fibonacci logic)
 
 function fibonacci(value) {
 
 	console.log('finbonacci: ' + value);
-
-	if (value < 2 || value%2 !== 0) {
-		return;
+	
+	if (value < 2) {
+		return value;
 	} else {
-
 		return (fibonacci(value-1) + fibonacci(value-2));
 	}
 }
+
+// Calls 'fibonacci' function with 'value' parameter and assigns to the global variable 'solution' before printing to console
 
 var solution = fibonacci(12);
 
