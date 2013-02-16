@@ -11,37 +11,62 @@ By starting with 1 and 2, the first 10 terms will be:
 
 By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 find the sum of the even-valued terms.
+
+1, 1, 2, 3, 5, 8, 13
 */
 
-/*
-This function still needs work...
+var fibArray = [];
+var evenFibArray = [];
+var solutionIndex = 0;
+var solution = 0;
+
+// The recursive function 'fib' takes the parameter 'index'. Our base case occurs when 'index' is less than 2
+// and is returned. Otherwise, the function will recursively call to itself using decremented parameters 
+// of (index-1) and (index-2) and ultimatly return the integer located at that index within the fibonacci sequence
+
+function fib(index) {
+	if (index < 2) {
+		return index;
+	}
+		return (fib(index-1) + fib(index-2));
+}
+//The function 'fibSeries' 
+
+function fibSeries(index) {
+	var myArray = [];
+	for (var i=0;i<=index;i++){
+		myArray.push(fib(i));
+	}
+	return myArray;
+}
+
+function getSolutionIndex(value){
+	var i = 0;
+	while (fib(i) < value){
+		i++;
+	}
+	return i;
+}
 
 function isEven(value) {
-	if(value%2 === 0) {
-		return true;
-	} else {
-      return false;
-    }
-}
-*/
-
-// The recursive function 'fibonacci' takes the parameter 'value'. Our base case occurs when 'value' is less than 2 (1 or 0)
-// and that same value is returned. Otherwise, the function will recursively call to itself using decremented parameters 
-// of (value-1) and (value-2) and returning the sum of those two recursive function calls (creates fibonacci logic)
-
-function fibonacci(value) {
-
-	console.log('finbonacci: ' + value);
-	
-	if (value < 2) {
-		return value;
-	} else {
-		return (fibonacci(value-1) + fibonacci(value-2));
-	}
+	return (value%2 === 0);
 }
 
-// Calls 'fibonacci' function with 'value' parameter and assigns to the global variable 'solution' before printing to console
+function getEvens(myArray) {
+	return myArray.filter(isEven);
+}
 
-var solution = fibonacci(12);
+function getSum(myArray) {
+	return myArray.reduce(function(a,b){
+			return a+b;
+	});
+}
 
-console.log('solution: ' + solution)
+solutionIndex = getSolutionIndex(4000000);
+fibArray = fibSeries(solutionIndex);
+evenFibArray = getEvens(fibArray);
+solution = getSum(evenFibArray);
+
+console.log(solution);
+
+
