@@ -9,26 +9,46 @@ The prime factors of 13195 are 5, 7, 13 and 29.
 What is the largest prime factor of the number 600851475143 ?
 */
 
-// The object 'solution' has the property 'primeFactors' which will ultimately contains a list of prime factors for
-// the parameter 'value' passed to the method 'getPrimeFactors'
+var solution = [];
 
-var solution = {};
-
-solution.primeFactors = [];
-
-solution.getPrimeFactors = function(value) {
+function getFactors(value) {
 	var i = 0;
+	var myFactors = [];
 	while(i <= value){
 		if (value%i === 0) {
-			solution.primeFactors.push(i);
+			myFactors.push(i);
 		}
 		i++;
 	}
+	return myFactors;
 };
 
+function isPrime(value) {
+	var divisors = 0;
+	for (var i=0;i<=value;i++) {
+		if (value%i === 0) {
+			divisors++;
+		}
+	}
+	if (divisors <= 2) {
+		return true;
+	} else {
+		return false;
+	}
+};
 
-solution.getPrimeFactors(600) //600851475143
-solution.primeFactors.sort();
-solution.primeFactors.reverse();
+function getPrimeFactors(myArray) {
+		return myArray.filter(isPrime);
+}
 
-console.log(solution.primeFactors[0]);
+
+solution = getPrimeFactors(getFactors(600)); //600851475143
+
+
+solution.sort(function(a,b){
+	return a-b;
+});
+
+solution.reverse();
+
+console.log(solution[0]);
