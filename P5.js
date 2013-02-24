@@ -9,4 +9,23 @@ http://projecteuler.net/problem=5
 What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 */
 
+function getSolution (low,high) {
+
+	var small = high * low;
+
+	while(low <= high) {
+		while(small % low != 0){
+			small++;
+		}
+		low++;
+	}
+	
+	return small;
+
+}
+
+getSolution(1,20);
+
+
+
 
