@@ -13,31 +13,22 @@ What is the smallest positive number that is evenly divisible by all of the numb
 function getSolution (low,high) {
 
 	var divisors = [];
-	var i = 0;
 
 	while(low <= high) {
 		divisors.push(low);
 		low++;
 	}
 
-	console.log('Divisors are: ' + divisors);
+	var smallest = divisors[divisors.length - 1]
 
-	var small = divisors[divisors.length - 1]
-
-	console.log('Small before loop is: ' + small);
-
-	while (i <= divisors.length) {
-		if((small % divisors[i]) === 0) {
-			i++;
-		} else {
-			small++;
+	for (var i = 0;i < divisors.length;i++) {
+		if(smallest % divisors[i] !== 0) {
+			smallest++;
 			i = 0;
 		}
 	}
-
-	console.log('Small after loop is: ' + small);
-	return small;
+	return smallest;
 }
 
 
-getSolution(1,4);
+getSolution(1,20);
