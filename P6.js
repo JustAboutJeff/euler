@@ -20,7 +20,8 @@ function SumSquareDiff (magicNumber) {
 	var mySquare = 0;
 	var mySum = 0;
 	this.getNaturals = function() {
-		for(var i = 1;i <= magicNumber;i++) {
+		var i = magicNumber;
+		while(i--) {
 			naturals.push(i);
 		}
 	}
