@@ -26,21 +26,20 @@ function SumSquareDiff (magicNumber) {
 		}
 	}
 	this.getSum = function() {
-		var j = naturals.length;
+		var j = magicNumber;
 		while(j--) {
 			mySum += Math.pow(naturals[j],2);
 		}
 	}
 	this.getSquare = function() {
-		var k = naturals.length;
+		var k = magicNumber;
 		while(k--) {
 			mySquare += naturals[k];
 		}
 		mySquare = Math.pow(mySquare,2);
 	}
 	this.solve = function() {
-		var myDiff = (mySquare - mySum);
-		return myDiff;
+		return (mySquare - mySum);
 	}
 }
 
