@@ -13,20 +13,20 @@ What is the 10001st prime number?
 function Prime () {
 
 	var primes = [2,3,5,7,11];
-	var p = 13;
+	var p = 13
 
 	this.solve = function(magicNumber) {
+
 		while (primes.length < magicNumber) {
-			// (Math.sqrt(p) >= 6p + 1) || (Math.sqrt(p) >= 6p - 1)
-			if (p % 2 !== 0 && p % 3 !== 0 && p % 5 !== 0 && p % 7 !== 0 ) {
+			if (p % 3 !== 0) {
 				primes.push(p);
 			}
-			p++;
+			p += 2;
 		}
-		return primes;
+		return primes.pop();
 	}
 		
 }
 
 var myPrime = new Prime();
-myPrime.solve(100);
+myPrime.solve(6);
