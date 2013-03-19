@@ -10,23 +10,23 @@ What is the 10001st prime number?
 
 */
 
-function Prime () {
+function findPrimeByIndex(index,buffer) {
 
-	var primes = [2,3,5,7,11];
-	var p = 13
+    var sieve = []
+    var i = 0;
+    var j = 0;
+    var primes = [];
 
-	this.solve = function(magicNumber) {
-
-		while (primes.length < magicNumber) {
-			if (p % 3 !== 0) {
-				primes.push(p);
-			}
-			p += 2;
-		}
-		return primes.pop();
-	}
-		
+    for (i = 2; i <= buffer; i++) {
+        if (!sieve[i]) {
+            // i has not been marked -- it is prime
+            primes.push(i);
+            for (j = i << 1; j <= buffer; j += i) {
+                sieve[j] = true;
+            }
+        }
+    }
+    return primes[index-1];
 }
 
-var myPrime = new Prime();
-myPrime.solve(6);
+findPrimeByIndex(10001,1000000);
