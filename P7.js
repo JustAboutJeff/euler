@@ -19,9 +19,8 @@ function findPrimeByIndex(index,buffer) {
 
     for (i = 2; i <= buffer; i++) {
         if (!sieve[i]) {
-            // i has not been marked -- it is prime
             primes.push(i);
-            for (j = i << 1; j <= buffer; j += i) {
+            for (j = i * 2; j <= buffer; j += i) {
                 sieve[j] = true;
             }
         }
